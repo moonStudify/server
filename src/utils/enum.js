@@ -12,5 +12,17 @@ module.exports.COLLECTION = {
 module.exports.ROLES = {
   ADMIN: 'admin',
   TEACHER: 'teacher',
-  User: 'User',
+  USER: 'User',
+};
+
+module.exports.STATUS = {
+  ACTIVE: 'active',
+  UN_ACTIVE: 'un_active',
+  DELETED: 'deleted',
+  OK: 'ok',
+  ARCHIVED: 'archived',
+  NOT_SUBMITTED: 'not submitted',
+  PASSED: 'passed',
+  FAILED: 'failed',
+  SUCCESS: 'success',
 };
