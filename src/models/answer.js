@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const { COLLECTION } = require('../utils/enum');
 
 const AnswerSchema = new Schema({
-  answerId: { type: String, required: true },
   name: { type: String },
   content: { type: String },
 });

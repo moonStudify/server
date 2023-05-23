@@ -19,7 +19,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const routes = require('./src/routes/routes');
 const userRoutes = require('./src/routes/userRoute');
 const classRoutes = require('./src/routes/classRoute');
 const newFeedRoutes = require('./src/routes/newFeedRoute');
@@ -28,7 +27,6 @@ const testRoutes = require('./src/routes/testRoute');
 const questionRoutes = require('./src/routes/questionRoute');
 
 
-app.use('/api', routes);
 app.use('/user', userRoutes);
 app.use('/class', classRoutes);
 app.use('/newfeed', newFeedRoutes);

@@ -3,11 +3,15 @@ const Schema = mongoose.Schema;
 const { COLLECTION } = require('../utils/enum');
 
 const QuestionSchema = new Schema({
-  questionId: { type: String, required: true },
-  type: { type: String, required: true },
   content: { type: String },
-  answers: { type: [String], required: true },
-  correctAnswers: { type: [String], required: true },
+  answers: [
+    { type: Schema.Types.ObjectId, ref: COLLECTION.ANSWER, required: true },
+  ],
+  correctAnswers: {
+    type: Schema.Types.ObjectId,
+    ref: COLLECTION.ANSWER,
+    required: true,
+  },
   thumbnailUrl: { type: String },
   maxPoint: { type: Number },
 });
