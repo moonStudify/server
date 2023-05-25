@@ -30,7 +30,6 @@ router.get('/', (req, res) => {
     .then((classes) => res.json(classes))
     .catch((err) => res.status(400).json('Error: ' + err));
 });
-
 // GET CLASS BY ID
 router.get('/:id', (req, res) => {
   Class.findById(req.params.id)
