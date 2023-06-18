@@ -4,6 +4,7 @@ const newFeedEndpoints = require('./newFeed.endpoint')
 const questionEndpoints = require('./question.endpoint')
 const classEndpoints = require('./class.endpoint')
 const testEndpoints = require('./test.endpoint')
+const takeTestEndpoints = require('./takeTest.endpoint')
 
 module.exports = function (app) {
 
@@ -48,5 +49,12 @@ module.exports = function (app) {
     app.post('/test/add', testEndpoints.AddTest)
     app.put('/test/:id', testEndpoints.UpdateTestById)
     app.delete('/test/:id', testEndpoints.DeleteTestById)
+
+    // TakeTest endpoints
+    app.get('/takeTest/', takeTestEndpoints.GetAllTakeTests)
+    app.get('/takeTest/:id', takeTestEndpoints.GetTakeTestById)
+    app.post('/takeTest/add', takeTestEndpoints.AddTakeTest)
+    app.put('/takeTest/:id', takeTestEndpoints.UpdateTakeTestById)
+    app.delete('/takeTest/:id', takeTestEndpoints.DeleteTakeTestById)
     
 }

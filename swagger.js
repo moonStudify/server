@@ -110,6 +110,17 @@ const doc = {
             maxPoint: "string",
             teacherId: "string",
         },
+        AddTakeTest: {
+            takeTestId: "string",
+            testId: "string",
+            userId: "string",
+            submitTime: "string",
+            point: "string",
+            questions: [],
+            chosenAnswer: [],
+            dateSubmit: "string",
+        },
+
     }
 }
 

@@ -33,7 +33,7 @@ const newFeedRoutes = require('./src/routes/newFeedRoute');
 const commentRoutes = require('./src/routes/commentRoute');
 const testRoutes = require('./src/routes/testRoute');
 const questionRoutes = require('./src/routes/questionRoute');
-
+const takeTestRoutes = require('./src/routes/takeTestRoute');
 
 app.use('/user', userRoutes);
 app.use('/class', classRoutes);
@@ -41,7 +41,7 @@ app.use('/newfeed', newFeedRoutes);
 app.use('/comment', commentRoutes);
 app.use('/test', testRoutes);
 app.use('/question', questionRoutes);
-
+app.use('/taketest', takeTestRoutes);
 
 app.listen(port, () => {
   console.log(`Server Started at ${port}`);

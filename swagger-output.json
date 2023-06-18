@@ -765,6 +765,127 @@
           }
         }
       }
+    },
+    "/takeTest/": {
+      "get": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to get all take tests.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/takeTest/{id}": {
+      "get": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to get the specific take test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to update the specific take test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Take test information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTakeTest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to delete the specific take test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/takeTest/add": {
+      "post": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to add a take test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Take test information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTakeTest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1028,6 +1149,45 @@
           "example": "string"
         },
         "teacherId": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddTakeTest": {
+      "type": "object",
+      "properties": {
+        "takeTestId": {
+          "type": "string",
+          "example": "string"
+        },
+        "testId": {
+          "type": "string",
+          "example": "string"
+        },
+        "userId": {
+          "type": "string",
+          "example": "string"
+        },
+        "submitTime": {
+          "type": "string",
+          "example": "string"
+        },
+        "point": {
+          "type": "string",
+          "example": "string"
+        },
+        "questions": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "chosenAnswer": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "dateSubmit": {
           "type": "string",
           "example": "string"
         }
