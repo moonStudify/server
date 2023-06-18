@@ -2,6 +2,7 @@ const userEndpoints = require('./user.endpoint')
 const commentEndpoints = require('./comment.endpoint')
 const newFeedEndpoints = require('./newFeed.endpoint')
 const questionEndpoints = require('./question.endpoint')
+const classEndpoints = require('./class.endpoint')
 
 module.exports = function (app) {
 
@@ -32,5 +33,12 @@ module.exports = function (app) {
     app.post('/question/add', questionEndpoints.AddQuestion)
     app.put('/question/:id', questionEndpoints.UpdateQuestionById)
     app.delete('/question/:id', questionEndpoints.DeleteQuestionById)
+    
+    // Class endpoints
+    app.get('/class/', classEndpoints.GetAllClasses)
+    app.get('/class/:id', classEndpoints.GetClassById)
+    app.post('/class/add', classEndpoints.AddClass)
+    app.put('/class/:id', classEndpoints.UpdateClassById)
+    app.delete('/class/:id', classEndpoints.DeleteClassById)
     
 }

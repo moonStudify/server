@@ -89,6 +89,15 @@ const doc = {
             thumbnailUrl: "string",
             maxPoint: "string",
         },
+        AddClass: {
+            classId: "string",
+            className: "string",
+            teacherId: "string",
+            students: [],
+            dateCreate: "string",
+            dateUpdate: "string",
+            bannerUrl: "string",
+        },
     }
 }
 

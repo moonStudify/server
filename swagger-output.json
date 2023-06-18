@@ -523,6 +523,127 @@
           }
         }
       }
+    },
+    "/class/": {
+      "get": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to get all classes.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/class/{id}": {
+      "get": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to get the specific class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to update the specific class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Class information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddClass"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to delete the specific class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/class/add": {
+      "post": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to add a class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Class information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddClass"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -706,6 +827,40 @@
           "example": "string"
         },
         "maxPoint": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddClass": {
+      "type": "object",
+      "properties": {
+        "classId": {
+          "type": "string",
+          "example": "string"
+        },
+        "className": {
+          "type": "string",
+          "example": "string"
+        },
+        "teacherId": {
+          "type": "string",
+          "example": "string"
+        },
+        "students": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "dateCreate": {
+          "type": "string",
+          "example": "string"
+        },
+        "dateUpdate": {
+          "type": "string",
+          "example": "string"
+        },
+        "bannerUrl": {
           "type": "string",
           "example": "string"
         }
