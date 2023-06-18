@@ -1,3 +1,4 @@
+const authEndpoints = require('./auth.endpoint')
 const userEndpoints = require('./user.endpoint')
 const commentEndpoints = require('./comment.endpoint')
 const newFeedEndpoints = require('./newFeed.endpoint')
@@ -7,6 +8,9 @@ const testEndpoints = require('./test.endpoint')
 const takeTestEndpoints = require('./takeTest.endpoint')
 
 module.exports = function (app) {
+
+    // Auth endpoints
+    app.post('/auth/login/google', authEndpoints.LoginWithGoogle)
 
     // User endpoints
     app.get('/user/', userEndpoints.GetAllUsers)
@@ -56,5 +60,5 @@ module.exports = function (app) {
     app.post('/takeTest/add', takeTestEndpoints.AddTakeTest)
     app.put('/takeTest/:id', takeTestEndpoints.UpdateTakeTestById)
     app.delete('/takeTest/:id', takeTestEndpoints.DeleteTakeTestById)
-    
+
 }

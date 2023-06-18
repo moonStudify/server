@@ -18,19 +18,10 @@
     "https"
   ],
   "securityDefinitions": {
-    "api_key": {
+    "JWT": {
       "type": "apiKey",
-      "name": "api_key",
+      "name": "Authorization",
       "in": "header"
-    },
-    "petstore_auth": {
-      "type": "oauth2",
-      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
-      "flow": "implicit",
-      "scopes": {
-        "read_pets": "read your pets",
-        "write_pets": "modify pets in your account"
-      }
     }
   },
   "consumes": [
@@ -40,6 +31,33 @@
     "application/json"
   ],
   "paths": {
+    "/auth/login/google": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to login with Google API.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Google information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginWithGoogle"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/user/": {
       "get": {
         "tags": [
@@ -1188,6 +1206,19 @@
           "items": {}
         },
         "dateSubmit": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "LoginWithGoogle": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "password": {
           "type": "string",
           "example": "string"
         }

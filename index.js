@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(bodyParser.json())
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
-
+const authRoutes = require('./src/routes/authRoute');
 const userRoutes = require('./src/routes/userRoute');
 const classRoutes = require('./src/routes/classRoute');
 const newFeedRoutes = require('./src/routes/newFeedRoute');
@@ -35,6 +35,7 @@ const testRoutes = require('./src/routes/testRoute');
 const questionRoutes = require('./src/routes/questionRoute');
 const takeTestRoutes = require('./src/routes/takeTestRoute');
 
+app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/class', classRoutes);
 app.use('/newfeed', newFeedRoutes);

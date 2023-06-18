@@ -19,19 +19,24 @@ const doc = {
         }
     ],
     securityDefinitions: {
-        api_key: {
-            type: "apiKey",
-            name: "api_key",
-            in: "header"
-        },
-        petstore_auth: {
-            type: "oauth2",
-            authorizationUrl: "https://petstore.swagger.io/oauth/authorize",
-            flow: "implicit",
-            scopes: {
-                read_pets: "read your pets",
-                write_pets: "modify pets in your account"
-            }
+        // api_key: {
+        //     type: "apiKey",
+        //     name: "api_key",
+        //     in: "header"
+        // },
+        // petstore_auth: {
+        //     type: "oauth2",
+        //     authorizationUrl: "https://petstore.swagger.io/oauth/authorize",
+        //     flow: "implicit",
+        //     scopes: {
+        //         read_pets: "read your pets",
+        //         write_pets: "modify pets in your account"
+        //     }
+        // },
+        JWT: {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     },
     definitions: {
@@ -120,7 +125,10 @@ const doc = {
             chosenAnswer: [],
             dateSubmit: "string",
         },
-
+        LoginWithGoogle: {
+            email: "string",
+            password: "string",
+        },
     }
 }
 
