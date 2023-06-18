@@ -1,14 +1,22 @@
 const userEndpoints = require('./user.endpoint')
-let expression = true
+const commentEndpoints = require('./comment.endpoint')
 
 
 module.exports = function (app) {
 
+    // User endpoints
     app.get('/user/', userEndpoints.GetAllUsers)
     app.get('/user/:id', userEndpoints.GetUserById)
     app.post('/user/add', userEndpoints.AddUser)
     app.put('/user/:id', userEndpoints.UpdateUserById)
     app.delete('/user/:id', userEndpoints.DeleteUserById)
+
+    // Comment endpoints
+    app.get('/comment/', commentEndpoints.GetAllComments)
+    app.get('/comment/:id', commentEndpoints.GetCommentById)
+    app.post('/comment/add', commentEndpoints.AddComment)
+    app.put('/comment/:id', commentEndpoints.UpdateCommentById)
+    app.delete('/comment/:id', commentEndpoints.DeleteCommentById)
 
     // /* NOTE: Completing informations automaticaly obtaineds */
     // app.get('/automatic_and_incremented/users/:id', (req, res) => {
