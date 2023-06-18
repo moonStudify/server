@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "start-gendoc": "node swagger.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,8 @@
     "mongoose": "^6.2.2",
     "nodemon": "^2.0.15",
     "passport": "^0.6.0",
-    "passport-google-oauth": "^2.0.0"
+    "passport-google-oauth": "^2.0.0",
+    "swagger-autogen": "^2.23.2",
+    "swagger-ui-express": "^4.6.3"
   }
 }

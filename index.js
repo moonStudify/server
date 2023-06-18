@@ -8,6 +8,10 @@ mongoose.set('strictQuery', false);
 mongoose.connect(mongoString);
 const database = mongoose.connection;
 
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger-output.json')
+const bodyParser = require('body-parser')
+
 database.on('error', (error) => {
   console.log(error);
 });
@@ -18,6 +22,10 @@ database.once('connected', () => {
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.use(bodyParser.json())
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
 
 const userRoutes = require('./src/routes/userRoute');
 const classRoutes = require('./src/routes/classRoute');
