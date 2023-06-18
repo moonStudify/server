@@ -3,6 +3,7 @@ const commentEndpoints = require('./comment.endpoint')
 const newFeedEndpoints = require('./newFeed.endpoint')
 const questionEndpoints = require('./question.endpoint')
 const classEndpoints = require('./class.endpoint')
+const testEndpoints = require('./test.endpoint')
 
 module.exports = function (app) {
 
@@ -40,5 +41,12 @@ module.exports = function (app) {
     app.post('/class/add', classEndpoints.AddClass)
     app.put('/class/:id', classEndpoints.UpdateClassById)
     app.delete('/class/:id', classEndpoints.DeleteClassById)
+
+    // Test endpoints
+    app.get('/test/', testEndpoints.GetAllTests)
+    app.get('/test/:id', testEndpoints.GetTestById)
+    app.post('/test/add', testEndpoints.AddTest)
+    app.put('/test/:id', testEndpoints.UpdateTestById)
+    app.delete('/test/:id', testEndpoints.DeleteTestById)
     
 }

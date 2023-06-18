@@ -644,6 +644,127 @@
           }
         }
       }
+    },
+    "/test/": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to get all tests.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/test/{id}": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to get the specific test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to update the specific test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Test information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to delete the specific test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/test/add": {
+      "post": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to add a test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Test information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -861,6 +982,52 @@
           "example": "string"
         },
         "bannerUrl": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddTest": {
+      "type": "object",
+      "properties": {
+        "testId": {
+          "type": "string",
+          "example": "string"
+        },
+        "classId": {
+          "type": "string",
+          "example": "string"
+        },
+        "questions": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "dateCreate": {
+          "type": "string",
+          "example": "string"
+        },
+        "dateUpdate": {
+          "type": "string",
+          "example": "string"
+        },
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "duration": {
+          "type": "string",
+          "example": "string"
+        },
+        "maxPoint": {
+          "type": "string",
+          "example": "string"
+        },
+        "teacherId": {
           "type": "string",
           "example": "string"
         }

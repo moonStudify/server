@@ -98,6 +98,18 @@ const doc = {
             dateUpdate: "string",
             bannerUrl: "string",
         },
+        AddTest: {
+            testId: "string",
+            classId: "string",
+            questions: [],
+            dateCreate: "string",
+            dateUpdate: "string",
+            name: "string",
+            description: "string",
+            duration: "string",
+            maxPoint: "string",
+            teacherId: "string",
+        },
     }
 }
 
