@@ -402,6 +402,127 @@
           }
         }
       }
+    },
+    "/question/": {
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to get all questions.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/question/{id}": {
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to get the specific question.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to update the specific question.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Question information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddQuestion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to delete the specific question.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/question/add": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to add a question.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Question information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddQuestion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -550,6 +671,41 @@
           "example": "string"
         },
         "teacherId": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddQuestion": {
+      "type": "object",
+      "properties": {
+        "questionId": {
+          "type": "string",
+          "example": "string"
+        },
+        "type": {
+          "type": "string",
+          "example": "string"
+        },
+        "content": {
+          "type": "string",
+          "example": "string"
+        },
+        "answers": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "correctAnswers": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "thumbnailUrl": {
+          "type": "string",
+          "example": "string"
+        },
+        "maxPoint": {
           "type": "string",
           "example": "string"
         }

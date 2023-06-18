@@ -79,7 +79,16 @@ const doc = {
             dateCreate: "string",
             newFeedUrl: "string",
             teacherId: "string",
-        }
+        },
+        AddQuestion: {
+            questionId: "string",
+            type: "string",
+            content: "string",
+            answers: [],
+            correctAnswers: [],
+            thumbnailUrl: "string",
+            maxPoint: "string",
+        },
     }
 }
 
