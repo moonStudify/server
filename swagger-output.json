@@ -1,0 +1,1228 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Moonstudify",
+    "description": "API Documentation for Moonstudify"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "User",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "JWT": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/login/google": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to login with Google API.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Google information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginWithGoogle"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to get all users.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to get the specific user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to update the specific user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "User information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to delete the specific user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/add": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to add a user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "User information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/comment/": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "description": "Endpoint to get all comments.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/comment/{id}": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "description": "Endpoint to get the specific comment.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Comment"
+        ],
+        "description": "Endpoint to update the specific comment.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Comment information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Comment"
+        ],
+        "description": "Endpoint to delete the specific user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/comment/add": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "description": "Endpoint to add a comment.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Comment information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/newFeed/": {
+      "get": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to get all newFeeds.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/newFeed/{id}": {
+      "get": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to get the specific newFeed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to update the specific newFeed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "NewFeed information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddNewFeed"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to delete the specific newFeed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/newFeed/add": {
+      "post": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to add a newFeed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "NewFeed information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddNewFeed"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/question/": {
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to get all questions.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/question/{id}": {
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to get the specific question.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to update the specific question.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Question information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddQuestion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to delete the specific question.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/question/add": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "description": "Endpoint to add a question.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Question information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddQuestion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/class/": {
+      "get": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to get all classes.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/class/{id}": {
+      "get": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to get the specific class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to update the specific class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Class information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddClass"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to delete the specific class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/class/add": {
+      "post": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to add a class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Class information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddClass"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/test/": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to get all tests.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/test/{id}": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to get the specific test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to update the specific test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Test information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to delete the specific test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/test/add": {
+      "post": {
+        "tags": [
+          "Test"
+        ],
+        "description": "Endpoint to add a test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Test information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/takeTest/": {
+      "get": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to get all take tests.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/takeTest/{id}": {
+      "get": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to get the specific take test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to update the specific take test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Take test information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTakeTest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to delete the specific take test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/takeTest/add": {
+      "post": {
+        "tags": [
+          "Take Test"
+        ],
+        "description": "Endpoint to add a take test.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Take test information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddTakeTest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Parents": {
+      "type": "object",
+      "properties": {
+        "father": {
+          "type": "string",
+          "example": "Simon Doe"
+        },
+        "mother": {
+          "type": "string",
+          "example": "Marie Doe"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Jhon Doe"
+        },
+        "age": {
+          "type": "number",
+          "example": 29
+        },
+        "parents": {
+          "$ref": "#/definitions/Parents"
+        },
+        "diplomas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "school": {
+                "type": "string",
+                "example": "XYZ University"
+              },
+              "year": {
+                "type": "number",
+                "example": 2020
+              },
+              "completed": {
+                "type": "boolean",
+                "example": true
+              },
+              "internship": {
+                "type": "object",
+                "properties": {
+                  "hours": {
+                    "type": "number",
+                    "example": 290
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "XYZ Company"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "AddUser": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "password": {
+          "type": "string",
+          "example": "string"
+        },
+        "role": {
+          "type": "string",
+          "example": "string"
+        },
+        "classes": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "avatarUrl": {
+          "type": "string",
+          "example": "string"
+        },
+        "status": {
+          "type": "string",
+          "example": "string"
+        },
+        "fullname": {
+          "type": "string",
+          "example": "string"
+        },
+        "dob": {
+          "type": "string",
+          "example": "string"
+        },
+        "createDate": {
+          "type": "string",
+          "example": "string"
+        },
+        "updateDate": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddNewFeed": {
+      "type": "object",
+      "properties": {
+        "newFeedId": {
+          "type": "string",
+          "example": "string"
+        },
+        "comments": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "content": {
+          "type": "string",
+          "example": "string"
+        },
+        "classId": {
+          "type": "string",
+          "example": "string"
+        },
+        "attachmentLink": {
+          "type": "string",
+          "example": "string"
+        },
+        "dateCreate": {
+          "type": "string",
+          "example": "string"
+        },
+        "newFeedUrl": {
+          "type": "string",
+          "example": "string"
+        },
+        "teacherId": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddQuestion": {
+      "type": "object",
+      "properties": {
+        "questionId": {
+          "type": "string",
+          "example": "string"
+        },
+        "type": {
+          "type": "string",
+          "example": "string"
+        },
+        "content": {
+          "type": "string",
+          "example": "string"
+        },
+        "answers": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "correctAnswers": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "thumbnailUrl": {
+          "type": "string",
+          "example": "string"
+        },
+        "maxPoint": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddClass": {
+      "type": "object",
+      "properties": {
+        "classId": {
+          "type": "string",
+          "example": "string"
+        },
+        "className": {
+          "type": "string",
+          "example": "string"
+        },
+        "teacherId": {
+          "type": "string",
+          "example": "string"
+        },
+        "students": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "dateCreate": {
+          "type": "string",
+          "example": "string"
+        },
+        "dateUpdate": {
+          "type": "string",
+          "example": "string"
+        },
+        "bannerUrl": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddTest": {
+      "type": "object",
+      "properties": {
+        "testId": {
+          "type": "string",
+          "example": "string"
+        },
+        "classId": {
+          "type": "string",
+          "example": "string"
+        },
+        "questions": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "dateCreate": {
+          "type": "string",
+          "example": "string"
+        },
+        "dateUpdate": {
+          "type": "string",
+          "example": "string"
+        },
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "duration": {
+          "type": "string",
+          "example": "string"
+        },
+        "maxPoint": {
+          "type": "string",
+          "example": "string"
+        },
+        "teacherId": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddTakeTest": {
+      "type": "object",
+      "properties": {
+        "takeTestId": {
+          "type": "string",
+          "example": "string"
+        },
+        "testId": {
+          "type": "string",
+          "example": "string"
+        },
+        "userId": {
+          "type": "string",
+          "example": "string"
+        },
+        "submitTime": {
+          "type": "string",
+          "example": "string"
+        },
+        "point": {
+          "type": "string",
+          "example": "string"
+        },
+        "questions": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "chosenAnswer": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "dateSubmit": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "LoginWithGoogle": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "password": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    }
+  }
+}

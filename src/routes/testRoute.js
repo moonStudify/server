@@ -1,55 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const Test = require('../models/test');
+const testController = require('../controllers/test.controller');
 
 // ADD TEST
-router.post('/add', (req, res) => {
-  const newTest = new Test({
-    testId: req.body.testId,
-    classCode: req.body.classCode,
-    description: req.body.description,
-    startTime: req.body.startTime,
-    endTime: req.body.endTime,
-    classId: req.body.classId,
-    url: req.body.url,
-    questions: req.body.questions,
-    questionOrders: req.body.questionOrders,
-    maxPoint: req.body.maxPoint,
-    bannerUrl: req.body.bannerUrl,
-  });
-
-  newTest
-    .save()
-    .then(() => res.json('Test Added...'))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.post('/add', testController.AddTest);
 
 // GET ALL TESTS
-router.get('/', (req, res) => {
-  Test.find()
-    .then((tests) => res.json(tests))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.get('/', testController.GetAllTests);
 
 // GET TEST BY ID
-router.get('/:id', (req, res) => {
-  Test.findById(req.params.id)
-    .then((test) => res.json(test))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.get('/:id', testController.GetTestById);
 
 // UPDATE TEST BY ID
-router.put('/:id', (req, res) => {
-  Test.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then((test) => res.json(test))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.put('/:id', testController.UpdateTestById);
 
 // DELETE TEST BY ID
-router.delete('/:id', (req, res) => {
-  Test.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Test deleted.'))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.delete('/:id', testController.DeleteTestById);
 
 module.exports = router;

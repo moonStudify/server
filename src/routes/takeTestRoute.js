@@ -1,52 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const TakeTest = require('../models/takeTest');
+const takeTestController = require('../controllers/takeTest.controller');
 
 // ADD TAKE TEST
-router.post('/add', (req, res) => {
-  const newTakeTest = new TakeTest({
-    takeTestId: req.body.takeTestId,
-    testId: req.body.testId,
-    userId: req.body.userId,
-    submitTime: req.body.submitTime,
-    point: req.body.point,
-    questions: req.body.questions,
-    chosenAnswer: req.body.chosenAnswer,
-    dateSubmit: req.body.dateSubmit,
-  });
-
-  newTakeTest
-    .save()
-    .then(() => res.json('TakeTest Added...'))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.post('/add', takeTestController.AddTakeTest);
 
 // GET ALL TAKE TESTS
-router.get('/', (req, res) => {
-  TakeTest.find()
-    .then((takeTests) => res.json(takeTests))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.get('/', takeTestController.GetAllTakeTests);
 
 // GET TAKE TEST BY ID
-router.get('/:id', (req, res) => {
-  TakeTest.findById(req.params.id)
-    .then((takeTest) => res.json(takeTest))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.get('/:id', takeTestController.GetTakeTestById);
 
 // UPDATE TAKE TEST BY ID
-router.put('/:id', (req, res) => {
-  TakeTest.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then((takeTest) => res.json(takeTest))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.put('/:id', takeTestController.UpdateTakeTestById);
 
 // DELETE TAKE TEST BY ID
-router.delete('/:id', (req, res) => {
-  TakeTest.findByIdAndDelete(req.params.id)
-    .then(() => res.json('TakeTest deleted.'))
-    .catch((err) => res.status(400).json('Error: ' + err));
-});
+router.delete('/:id', takeTestController.DeleteTakeTestById);
 
 module.exports = router;
