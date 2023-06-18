@@ -1,6 +1,6 @@
 const userEndpoints = require('./user.endpoint')
 const commentEndpoints = require('./comment.endpoint')
-
+const newFeedEndpoints = require('./newFeed.endpoint')
 
 module.exports = function (app) {
 
@@ -17,6 +17,13 @@ module.exports = function (app) {
     app.post('/comment/add', commentEndpoints.AddComment)
     app.put('/comment/:id', commentEndpoints.UpdateCommentById)
     app.delete('/comment/:id', commentEndpoints.DeleteCommentById)
+
+    // NewFeed endpoints
+    app.get('/newFeed/', newFeedEndpoints.GetAllNewFeeds)
+    app.get('/newFeed/:id', newFeedEndpoints.GetNewFeedById)
+    app.post('/newFeed/add', newFeedEndpoints.AddNewFeed)
+    app.put('/newFeed/:id', newFeedEndpoints.UpdateNewFeedById)
+    app.delete('/newFeed/:id', newFeedEndpoints.DeleteNewFeedById)
 
     // /* NOTE: Completing informations automaticaly obtaineds */
     // app.get('/automatic_and_incremented/users/:id', (req, res) => {

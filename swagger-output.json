@@ -281,6 +281,127 @@
           }
         }
       }
+    },
+    "/newFeed/": {
+      "get": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to get all newFeeds.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/newFeed/{id}": {
+      "get": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to get the specific newFeed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to update the specific newFeed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input",
+            "in": "body",
+            "description": "NewFeed information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddNewFeed"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to delete the specific newFeed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/newFeed/add": {
+      "post": {
+        "tags": [
+          "NewFeed"
+        ],
+        "description": "Endpoint to add a newFeed.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "NewFeed information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddNewFeed"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -391,6 +512,44 @@
           "example": "string"
         },
         "updateDate": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "AddNewFeed": {
+      "type": "object",
+      "properties": {
+        "newFeedId": {
+          "type": "string",
+          "example": "string"
+        },
+        "comments": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "content": {
+          "type": "string",
+          "example": "string"
+        },
+        "classId": {
+          "type": "string",
+          "example": "string"
+        },
+        "attachmentLink": {
+          "type": "string",
+          "example": "string"
+        },
+        "dateCreate": {
+          "type": "string",
+          "example": "string"
+        },
+        "newFeedUrl": {
+          "type": "string",
+          "example": "string"
+        },
+        "teacherId": {
           "type": "string",
           "example": "string"
         }

@@ -69,6 +69,16 @@ const doc = {
             dob: "string",
             createDate: "string",
             updateDate: "string",
+        },
+        AddNewFeed: {
+            newFeedId: "string",
+            comments: [],
+            content: "string",
+            classId: "string",
+            attachmentLink: "string",
+            dateCreate: "string",
+            newFeedUrl: "string",
+            teacherId: "string",
         }
     }
 }
