@@ -11,6 +11,7 @@ module.exports = function (app) {
 
     // Auth endpoints
     app.post('/auth/login/google', authEndpoints.LoginWithGoogle)
+    app.get('/auth/login/accessToken', authEndpoints.GetAccessToken)
 
     // User endpoints
     app.get('/user/', userEndpoints.GetAllUsers)

@@ -22,3 +22,13 @@ export const LoginWithGoogle = async (req, res) => {
 
     return res.status(200).send(data);
 }
+
+export const GetAccessToken = async (req, res) => {
+    /*  #swagger.tags = ['Auth']
+        #swagger.description = 'Endpoint to get access token.'       
+    */
+    res.setHeader('Content-Type', 'application/json')
+    const data = authController.GetAccessToken(req, res);
+
+    return res.status(200).send(data);
+}
