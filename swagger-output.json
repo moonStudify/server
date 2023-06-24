@@ -5,7 +5,7 @@
     "title": "Moonstudify",
     "description": "API Documentation for Moonstudify"
   },
-  "host": "localhost:3000",
+  "host": "localhost:5000",
   "basePath": "/",
   "tags": [
     {
@@ -51,6 +51,23 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/login/accessToken": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Endpoint to get access token.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"

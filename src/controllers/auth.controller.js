@@ -1,4 +1,11 @@
+require('dotenv').config();
+var axios = require("axios").default;
 const User = require('../models/user');
+
+const issuerBaseUrl = process.env.AUTH0_ISSUER_BASE_URL;
+const client_id = process.env.AUTH0_CLIENT_ID;
+const client_secret = process.env.AUTH0_CLIENT_SECRET;
+const audience = process.env.AUTH0_AUDIENCE;
 
 // GET ALL AUTHS
 const LoginWithGoogle = async (req, res, next) => {
@@ -71,6 +78,34 @@ const LoginWithGoogle = async (req, res, next) => {
     }
 }
 
+const GetAccessToken = async (req, res, next) => {
+    var options = {
+        headers: { 'content-type': 'application/json' },
+    };
+    const url = `${issuerBaseUrl}/oauth/token`;
+    const body = {
+        grant_type: 'client_credentials',
+        client_id: client_id,
+        client_secret: client_secret,
+        audience: audience
+    }
+
+    axios.post(url, body, options).then(function (response) {
+        return res.status(200).json({
+            message: 'Get access token successfully',
+            success: true,
+            data: response.data,
+        });
+    }).catch(function (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: 'Internal server error',
+            success: false,
+        });
+    });
+};
+
 module.exports = {
     LoginWithGoogle,
+    GetAccessToken
 }

@@ -1,31 +1,40 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
-const mongoose = require('mongoose');
-const mongoString = process.env.DATABASE_URL;
-const port = process.env.PORT || 5000;
-mongoose.set('strictQuery', false);
-mongoose.connect(mongoString);
-const database = mongoose.connection;
-
+const morgan = require('morgan');
+const helmet = require('helmet');
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./swagger-output.json')
 const bodyParser = require('body-parser')
 
+//#region ENV
+const port = process.env.PORT || 5000;
+const mongoString = process.env.DATABASE_URL;
+//#endregion
+
+//#region MongoDB
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
+mongoose.connect(mongoString);
+
+const database = mongoose.connection;
 database.on('error', (error) => {
   console.log(error);
 });
-
 database.once('connected', () => {
   console.log('Database Connected');
 });
+//#endregion
+
 const app = express();
+app.use(morgan('dev'));
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
-
 app.use(bodyParser.json())
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
+//#region Routes
 const authRoutes = require('./src/routes/authRoute');
 const userRoutes = require('./src/routes/userRoute');
 const classRoutes = require('./src/routes/classRoute');
@@ -43,6 +52,7 @@ app.use('/comment', commentRoutes);
 app.use('/test', testRoutes);
 app.use('/question', questionRoutes);
 app.use('/taketest', takeTestRoutes);
+//#endregion
 
 app.listen(port, () => {
   console.log(`Server Started at ${port}`);
