@@ -59,7 +59,7 @@ export const UpdateClassById = (req, res) => {
             in: 'body',
             description: 'Class information.',
             required: true,
-            schema: { $ref: "#/definitions/AddClass" }
+            schema: { $ref: "#/definitions/UpdateClass" }
         }
     */
     res.setHeader('Content-Type', 'application/json')

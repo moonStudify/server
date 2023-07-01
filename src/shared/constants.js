@@ -3,6 +3,12 @@ const CLASS_STUDENT_STATUS = {
     INACTIVE: 'Inactive',
 }
 
+const CLASS_STATUS = {
+    ACTIVE: 'Active',
+    INACTIVE: 'Inactive',
+}
+
 module.exports = {
     CLASS_STUDENT_STATUS,
+    CLASS_STATUS
 }

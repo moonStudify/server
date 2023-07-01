@@ -42,7 +42,6 @@ const GetClassByTeacherId = async (req, res) => {
 // ADD CLASS
 const AddClass = async (req, res) => {
     const newClass = new Class({
-        classId: req.body.classId,
         classCode: req.body.classCode,
         description: req.body.description,
         newfeeds: req.body.newfeeds,
@@ -50,9 +49,8 @@ const AddClass = async (req, res) => {
         name: req.body.name,
         tests: req.body.tests,
         teacherId: req.body.teacherId,
-        dateCreate: req.body.dateCreate,
-        dateUpdate: req.body.dateUpdate,
         bannerUrl: req.body.bannerUrl,
+        createAt: new Date().toISOString(),
     });
 
     newClass
@@ -69,7 +67,10 @@ const AddClass = async (req, res) => {
 
 // UPDATE CLASS BY ID
 const UpdateClassById = async (req, res) => {
-    Class.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    Class.findByIdAndUpdate(
+        req.params.id,
+        { ...req.body, updateAt: new Date().toISOString() },
+        { new: true })
         .then((data) => res.json({
             success: true,
             data: data,
