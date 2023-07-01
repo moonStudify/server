@@ -1,6 +1,7 @@
 require('dotenv').config();
 const swaggerAutogen = require('swagger-autogen')()
 const port = process.env.PORT || 5000;
+const hostUrl = process.env.HOST_URL || `localhost:${port}`
 
 const doc = {
     info: {
@@ -8,7 +9,7 @@ const doc = {
         title: "Moonstudify",
         description: "API Documentation for Moonstudify"
     },
-    host: `localhost:${port}`,
+    host: hostUrl,
     basePath: "/",
     schemes: ['http', 'https'],
     consumes: ['application/json'],
