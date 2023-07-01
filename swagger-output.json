@@ -784,6 +784,60 @@
         }
       }
     },
+    "/classStudent/updateStatus": {
+      "put": {
+        "tags": [
+          "Class Student"
+        ],
+        "description": "Endpoint to update student status in class. Return an object with updated class student information if successful. Otherwise, return null if not found.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Class Student information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateStudentStatusInClass"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Class Student information.",
+            "schema": {
+              "$ref": "#/definitions/ClassStudent"
+            }
+          }
+        }
+      }
+    },
+    "/classStudent/student/{id}": {
+      "get": {
+        "tags": [
+          "Class Student"
+        ],
+        "description": "Endpoint to get all classes of student.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/test/": {
       "get": {
         "tags": [
@@ -1128,15 +1182,15 @@
         },
         "dob": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         },
         "createDate": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         },
         "updateDate": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         }
       }
     },
@@ -1166,7 +1220,7 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         },
         "newFeedUrl": {
           "type": "string",
@@ -1230,7 +1284,7 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         }
       }
     },
@@ -1274,11 +1328,11 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         },
         "dateUpdate": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         },
         "bannerUrl": {
           "type": "string",
@@ -1307,11 +1361,11 @@
         },
         "startTime": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         },
         "endTime": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         },
         "url": {
           "type": "string",
@@ -1354,7 +1408,7 @@
         },
         "submitTime": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         },
         "point": {
           "type": "number",
@@ -1372,7 +1426,7 @@
         },
         "dateSubmit": {
           "type": "string",
-          "example": "2023-07-01T15:51:40.289Z"
+          "example": "2023-07-01T16:09:02.769Z"
         }
       }
     },
@@ -1390,6 +1444,19 @@
       }
     },
     "JoinClass": {
+      "type": "object",
+      "properties": {
+        "classId": {
+          "type": "string",
+          "example": "string"
+        },
+        "userId": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "UpdateStudentStatusInClass": {
       "type": "object",
       "properties": {
         "classId": {

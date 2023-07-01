@@ -135,6 +135,10 @@ const doc = {
         JoinClass: {
             classId: "string",
             userId: "string",
+        },
+        UpdateStudentStatusInClass: {
+            classId: "string",
+            userId: "string",
             status: "string",
         }
     }

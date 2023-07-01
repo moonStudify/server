@@ -12,4 +12,10 @@ router.get('/:id/:status', checkJwt, classStudentController.FilterStudentsInClas
 // JOIN CLASS
 router.post('/join', checkJwt, classStudentController.JoinClass);
 
+// UPDATE STUDENT STATUS IN CLASS
+router.put('/updateStatus', checkJwt, classStudentController.UpdateStudentStatusInClass);
+
+// GET ALL CLASSES OF STUDENT
+router.get('/student/:id', checkJwt, classStudentController.GetAllClassesByUserId);
+
 module.exports = router;

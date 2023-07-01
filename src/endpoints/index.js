@@ -54,6 +54,8 @@ module.exports = function (app) {
     app.get('/classStudent/:id', classStudentEndpoints.GetAllStudentsInClass)
     app.get('/classStudent/:id/:status', classStudentEndpoints.FilterStudentsInClassByStatus)
     app.post('/classStudent/join', classStudentEndpoints.JoinClass)
+    app.put('/classStudent/updateStatus', classStudentEndpoints.UpdateStudentStatusInClass)
+    app.get('/classStudent/student/:id', classStudentEndpoints.GetAllClassesByUserId)
 
     // Test endpoints
     app.get('/test/', testEndpoints.GetAllTests)
