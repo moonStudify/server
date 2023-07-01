@@ -5,7 +5,7 @@
     "title": "Moonstudify",
     "description": "API Documentation for Moonstudify"
   },
-  "host": "localhost:5000",
+  "host": "http://localhost:5000",
   "basePath": "/",
   "tags": [
     {
@@ -14,8 +14,7 @@
     }
   ],
   "schemes": [
-    "http",
-    "https"
+    "http"
   ],
   "securityDefinitions": {
     "Bearer": {
