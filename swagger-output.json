@@ -18,7 +18,7 @@
     "https"
   ],
   "securityDefinitions": {
-    "JWT": {
+    "Bearer": {
       "type": "apiKey",
       "name": "Authorization",
       "in": "header"
@@ -1241,5 +1241,10 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
 }
