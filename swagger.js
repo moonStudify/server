@@ -10,7 +10,7 @@ const doc = {
         title: "Moonstudify",
         description: "API Documentation for Moonstudify"
     },
-    host: `${schema}://${hostUrl}`,
+    host: `${hostUrl}`,
     basePath: "/",
     schemes: [schema],
     consumes: ['application/json'],
