@@ -32,7 +32,17 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json())
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use(
+  '/docs', swaggerUi.serve,
+  swaggerUi.setup(
+    swaggerFile,
+    {
+      swaggerOptions: { 
+        persistAuthorization: true 
+      }
+    }
+  )
+)
 
 //#region Routes
 const authRoutes = require('./src/routes/authRoute');
