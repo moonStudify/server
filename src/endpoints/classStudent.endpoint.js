@@ -61,12 +61,12 @@ export const UpdateStudentStatusInClass = (req, res) => {
 }
 
 // GET ALL CLASSES OF STUDENT
-export const GetAllClassesByUserId = (req, res) => {
+export const GetAllClassesByStudentId = (req, res) => {
     /*  #swagger.tags = ['Class Student']
         #swagger.description = 'Endpoint to get all classes of student.' 
     */
     res.setHeader('Content-Type', 'application/json')
-    const data = classStudentController.GetAllClassesByUserId(req, res);
+    const data = classStudentController.GetAllClassesByStudentId(req, res);
 
     return res.status(200).send(data);
 }

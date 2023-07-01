@@ -134,11 +134,11 @@ const doc = {
         },
         JoinClass: {
             classId: "string",
-            userId: "string",
+            studentId: "string",
         },
         UpdateStudentStatusInClass: {
             classId: "string",
-            userId: "string",
+            studentId: "string",
             status: "string",
         }
     }
