@@ -29,8 +29,25 @@ const JoinClass = async (req, res) => {
         .catch((err) => res.status(400).json('Error: ' + err));
 }
 
+// UPDATE STUDENT STATUS IN CLASS
+const UpdateStudentStatusInClass = async (req, res) => {
+    ClassStudent.findOneAndUpdate({ classId: req.params.classId, userId: req.params.userId }, { status: req.params.status }, { new: true })
+        .then((classStudent) => res.json(classStudent))
+        .catch((err) => res.status(400).json('Error: ' + err));
+}
+
+// GET ALL CLASSES BY USER ID
+const GetAllClassesByUserId = async (req, res) => {
+    // get all class student by user id and populate class
+    ClassStudent.find({ userId: req.params.id }).populate('classId')
+        .then((classStudents) => res.json(classStudents))
+        .catch((err) => res.status(400).json('Error: ' + err));
+}
+
 module.exports = {
     GetAllStudentsInClass,
     FilterStudentsInClassByStatus,
     JoinClass,
+    UpdateStudentStatusInClass,
+    GetAllClassesByUserId,
 }
