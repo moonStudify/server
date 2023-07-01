@@ -1,4 +1,5 @@
 const Test = require('../models/test');
+const { TEST_STATUS } = require('../shared/constants');
 
 // GET ALL TESTS
 const GetAllTests = async (req, res) => {
@@ -29,17 +30,18 @@ const GetTestById = async (req, res) => {
 // ADD TEST
 const AddTest = async (req, res) => {
     const newTest = new Test({
-        testId: req.body.testId,
+        classId: req.body.classId,
         classCode: req.body.classCode,
         description: req.body.description,
         startTime: req.body.startTime,
         endTime: req.body.endTime,
-        classId: req.body.classId,
         url: req.body.url,
         questions: req.body.questions,
         questionOrders: req.body.questionOrders,
         maxPoint: req.body.maxPoint,
         bannerUrl: req.body.bannerUrl,
+        status: TEST_STATUS.ACTIVE,
+        createAt: new Date().toISOString(),
     });
 
     newTest
@@ -56,7 +58,10 @@ const AddTest = async (req, res) => {
 
 // UPDATE TEST BY ID
 const UpdateTestById = async (req, res) => {
-    Test.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    Test.findByIdAndUpdate(
+        req.params.id,
+        { ...req.body, updateAt: new Date().toISOString() },
+        { new: true })
         .then((data) => res.json({
             success: true,
             data: data,
