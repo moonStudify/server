@@ -135,7 +135,7 @@
             "description": "User information.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AddUser"
+              "$ref": "#/definitions/UpdateUser"
             }
           }
         ],
@@ -816,7 +816,13 @@
     },
     "/classStudent/student/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Class Student"
+        ],
+        "description": "Endpoint to get all classes of student.",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -825,7 +831,11 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/test/": {
@@ -1137,26 +1147,9 @@
     "AddUser": {
       "type": "object",
       "properties": {
-        "userId": {
-          "type": "string",
-          "example": "string"
-        },
         "email": {
           "type": "string",
           "example": "string"
-        },
-        "password": {
-          "type": "string",
-          "example": "string"
-        },
-        "role": {
-          "type": "string",
-          "example": "string"
-        },
-        "classes": {
-          "type": "array",
-          "example": [],
-          "items": {}
         },
         "avatarUrl": {
           "type": "string",
@@ -1172,15 +1165,28 @@
         },
         "dob": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
-        },
-        "createDate": {
+          "example": "2023-07-01T16:56:41.923Z"
+        }
+      }
+    },
+    "UpdateUser": {
+      "type": "object",
+      "properties": {
+        "avatarUrl": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "string"
         },
-        "updateDate": {
+        "status": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "string"
+        },
+        "fullname": {
+          "type": "string",
+          "example": "string"
+        },
+        "dob": {
+          "type": "string",
+          "example": "2023-07-01T16:56:41.923Z"
         }
       }
     },
@@ -1210,7 +1216,7 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "2023-07-01T16:56:41.923Z"
         },
         "newFeedUrl": {
           "type": "string",
@@ -1274,7 +1280,7 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "2023-07-01T16:56:41.923Z"
         }
       }
     },
@@ -1318,11 +1324,11 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "2023-07-01T16:56:41.923Z"
         },
         "dateUpdate": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "2023-07-01T16:56:41.923Z"
         },
         "bannerUrl": {
           "type": "string",
@@ -1351,11 +1357,11 @@
         },
         "startTime": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "2023-07-01T16:56:41.923Z"
         },
         "endTime": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "2023-07-01T16:56:41.923Z"
         },
         "url": {
           "type": "string",
@@ -1398,7 +1404,7 @@
         },
         "submitTime": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "2023-07-01T16:56:41.923Z"
         },
         "point": {
           "type": "number",
@@ -1416,7 +1422,7 @@
         },
         "dateSubmit": {
           "type": "string",
-          "example": "2023-07-01T16:40:49.705Z"
+          "example": "2023-07-01T16:56:41.923Z"
         }
       }
     },

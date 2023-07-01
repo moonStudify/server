@@ -55,17 +55,17 @@ const doc = {
             ]
         },
         AddUser: {
-            userId: "string",
             email: "string",
-            password: "string",
-            role: "string",
-            classes: [],
             avatarUrl: "string",
             status: "string",
             fullname: "string",
             dob: UtcNow,
-            createDate: UtcNow,
-            updateDate: UtcNow,
+        },
+        UpdateUser: {
+            avatarUrl: "string",
+            status: "string",
+            fullname: "string",
+            dob: UtcNow,
         },
         AddNewFeed: {
             newFeedId: "string",

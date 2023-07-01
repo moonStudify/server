@@ -4,14 +4,20 @@ const TakeTest = require('../models/takeTest');
 const GetAllTakeTests = async (req, res) => {
     TakeTest.find()
         .then((takeTests) => res.json(takeTests))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // GET TAKE TEST BY ID
 const GetTakeTestById = async (req, res) => {
     TakeTest.findById(req.params.id)
         .then((takeTest) => res.json(takeTest))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // ADD TAKE TEST
@@ -29,22 +35,31 @@ const AddTakeTest = async (req, res) => {
 
     newTakeTest
         .save()
-        .then(() => res.json('TakeTest Added...'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .then((takeTests) => res.json(takeTests))
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // UPDATE TAKE TEST BY ID
 const UpdateTakeTestById = async (req, res) => {
     TakeTest.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((takeTest) => res.json(takeTest))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // DELETE TAKE TEST BY ID
 const DeleteTakeTestById = async (req, res) => {
     TakeTest.findByIdAndDelete(req.params.id)
-        .then(() => res.json('TakeTest deleted.'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .then((takeTests) => res.json(takeTests))
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 module.exports = {

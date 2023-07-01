@@ -4,14 +4,20 @@ const NewFeed = require('../models/newFeed');
 const GetAllNewFeeds = async (req, res) => {
     NewFeed.find()
         .then((newFeeds) => res.json(newFeeds))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // GET NEW FEED BY ID
 const GetNewFeedById = async (req, res) => {
     NewFeed.findById(req.params.id)
         .then((newFeed) => res.json(newFeed))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // ADD NEW FEED
@@ -29,22 +35,31 @@ const AddNewFeed = async (req, res) => {
 
     newNewFeed
         .save()
-        .then(() => res.json('NewFeed Added...'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .then((newFeeds) => res.json(newFeeds))
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // UPDATE NEW FEED BY ID
 const UpdateNewFeedById = async (req, res) => {
     NewFeed.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((newFeed) => res.json(newFeed))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // DELETE NEW FEED BY ID
 const DeleteNewFeedById = async (req, res) => {
     NewFeed.findByIdAndDelete(req.params.id)
-        .then(() => res.json('NewFeed deleted.'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+    .then((newFeeds) => res.json(newFeeds))
+    .catch((err) => res.status(500).json({
+        success: false,
+        message: err,
+    }));
 }
 
 module.exports = {
