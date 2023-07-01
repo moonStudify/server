@@ -64,6 +64,7 @@ app.use(
 const authRoutes = require('./src/routes/authRoute');
 const userRoutes = require('./src/routes/userRoute');
 const classRoutes = require('./src/routes/classRoute');
+const classStudentRoutes = require('./src/routes/classStudentRoute');
 const newFeedRoutes = require('./src/routes/newFeedRoute');
 const commentRoutes = require('./src/routes/commentRoute');
 const testRoutes = require('./src/routes/testRoute');
@@ -73,6 +74,7 @@ const takeTestRoutes = require('./src/routes/takeTestRoute');
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/class', classRoutes);
+app.use('/classstudent', classStudentRoutes);
 app.use('/newfeed', newFeedRoutes);
 app.use('/comment', commentRoutes);
 app.use('/test', testRoutes);

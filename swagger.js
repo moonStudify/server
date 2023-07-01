@@ -4,6 +4,8 @@ const port = process.env.PORT || 5000;
 const hostUrl = process.env.HOST_URL || `localhost:${port}`
 const schema = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 
+const UtcNow = new Date().toISOString();
+
 const doc = {
     info: {
         version: "1.0.0",
@@ -61,9 +63,9 @@ const doc = {
             avatarUrl: "string",
             status: "string",
             fullname: "string",
-            dob: "string",
-            createDate: "string",
-            updateDate: "string",
+            dob: UtcNow,
+            createDate: UtcNow,
+            updateDate: UtcNow,
         },
         AddNewFeed: {
             newFeedId: "string",
@@ -71,7 +73,7 @@ const doc = {
             content: "string",
             classId: "string",
             attachmentLink: "string",
-            dateCreate: "string",
+            dateCreate: UtcNow,
             newFeedUrl: "string",
             teacherId: "string",
         },
@@ -82,43 +84,59 @@ const doc = {
             answers: [],
             correctAnswers: [],
             thumbnailUrl: "string",
-            maxPoint: "string",
+            maxPoint: 0,
+        },
+        AddComment: {
+            commentId: "string",
+            newFeedId: "string",
+            content: "string",
+            dateCreate: UtcNow,
         },
         AddClass: {
             classId: "string",
-            className: "string",
+            classCode: "string",
+            description: "string",
+            newfeeds: [],
+            users: [],
+            name: "string",
+            tests: [],
             teacherId: "string",
-            students: [],
-            dateCreate: "string",
-            dateUpdate: "string",
+            dateCreate: UtcNow,
+            dateUpdate: UtcNow,
             bannerUrl: "string",
         },
         AddTest: {
             testId: "string",
             classId: "string",
-            questions: [],
-            dateCreate: "string",
-            dateUpdate: "string",
-            name: "string",
+            classCode: "string",
             description: "string",
-            duration: "string",
-            maxPoint: "string",
-            teacherId: "string",
+            startTime: UtcNow,
+            endTime: UtcNow,
+            url: "string",
+            questions: [],
+            questionOrders: [],
+            maxPoint: 0,
+            bannerUrl: "string",
         },
         AddTakeTest: {
             takeTestId: "string",
             testId: "string",
             userId: "string",
-            submitTime: "string",
-            point: "string",
+            submitTime: UtcNow,
+            point: 0,
             questions: [],
             chosenAnswer: [],
-            dateSubmit: "string",
+            dateSubmit: UtcNow,
         },
         LoginWithGoogle: {
             email: "string",
             password: "string",
         },
+        JoinClass: {
+            classId: "string",
+            userId: "string",
+            status: "string",
+        }
     }
 }
 

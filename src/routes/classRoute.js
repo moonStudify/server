@@ -12,6 +12,9 @@ router.get('/', checkJwt, classController.GetAllClasses);
 // GET CLASS BY ID
 router.get('/:id', checkJwt, classController.GetClassById);
 
+// GET CLASS BY TEACHER ID
+router.get('/teacher/:id', checkJwt, classController.GetClassByTeacherId);
+
 // UPDATE CLASS BY ID
 router.put('/:id', checkJwt, classController.UpdateClassById);
 
