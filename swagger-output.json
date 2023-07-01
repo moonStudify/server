@@ -619,7 +619,7 @@
             "description": "Class information.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AddClass"
+              "$ref": "#/definitions/UpdateClass"
             }
           }
         ],
@@ -1165,7 +1165,7 @@
         },
         "dob": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "2023-07-01T17:49:53.302Z"
         }
       }
     },
@@ -1186,7 +1186,7 @@
         },
         "dob": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "2023-07-01T17:49:53.302Z"
         }
       }
     },
@@ -1216,7 +1216,7 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "2023-07-01T17:49:53.302Z"
         },
         "newFeedUrl": {
           "type": "string",
@@ -1245,9 +1245,8 @@
           "items": {}
         },
         "correctAnswers": {
-          "type": "array",
-          "example": [],
-          "items": {}
+          "type": "string",
+          "example": "string"
         },
         "thumbnailUrl": {
           "type": "string",
@@ -1276,9 +1275,8 @@
           "items": {}
         },
         "correctAnswers": {
-          "type": "array",
-          "example": [],
-          "items": {}
+          "type": "string",
+          "example": "string"
         },
         "thumbnailUrl": {
           "type": "string",
@@ -1307,17 +1305,13 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "2023-07-01T17:49:53.302Z"
         }
       }
     },
     "AddClass": {
       "type": "object",
       "properties": {
-        "classId": {
-          "type": "string",
-          "example": "string"
-        },
         "classCode": {
           "type": "string",
           "example": "string"
@@ -1349,13 +1343,37 @@
           "type": "string",
           "example": "string"
         },
-        "dateCreate": {
+        "bannerUrl": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "string"
+        }
+      }
+    },
+    "UpdateClass": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": "string"
         },
-        "dateUpdate": {
+        "newfeeds": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "users": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "name": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "string"
+        },
+        "tests": {
+          "type": "array",
+          "example": [],
+          "items": {}
         },
         "bannerUrl": {
           "type": "string",
@@ -1384,11 +1402,11 @@
         },
         "startTime": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "2023-07-01T17:49:53.302Z"
         },
         "endTime": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "2023-07-01T17:49:53.302Z"
         },
         "url": {
           "type": "string",
@@ -1431,7 +1449,7 @@
         },
         "submitTime": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "2023-07-01T17:49:53.302Z"
         },
         "point": {
           "type": "number",
@@ -1449,7 +1467,7 @@
         },
         "dateSubmit": {
           "type": "string",
-          "example": "2023-07-01T17:16:41.939Z"
+          "example": "2023-07-01T17:49:53.302Z"
         }
       }
     },
