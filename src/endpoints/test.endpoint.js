@@ -47,7 +47,7 @@ export const UpdateTestById = (req, res) => {
             in: 'body',
             description: 'Test information.',
             required: true,
-            schema: { $ref: "#/definitions/AddTest" }
+            schema: { $ref: "#/definitions/UpdateTest" }
         }
     */
     res.setHeader('Content-Type', 'application/json')

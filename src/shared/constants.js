@@ -8,7 +8,13 @@ const CLASS_STATUS = {
     INACTIVE: 'Inactive',
 }
 
+const TEST_STATUS = {
+    ACTIVE: 'Active',
+    INACTIVE: 'Inactive',
+}
+
 module.exports = {
     CLASS_STUDENT_STATUS,
-    CLASS_STATUS
+    CLASS_STATUS,
+    TEST_STATUS,
 }
