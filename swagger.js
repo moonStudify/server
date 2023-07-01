@@ -81,7 +81,7 @@ const doc = {
             type: "string",
             content: "string",
             answers: [],
-            correctAnswers: [],
+            correctAnswers: "string",
             thumbnailUrl: "string",
             maxPoint: 0,
         },
