@@ -10,6 +10,7 @@ const bodyParser = require('body-parser')
 //#region ENV
 const port = process.env.PORT || 5000;
 const mongoString = process.env.DATABASE_URL;
+const hostUrl = process.env.HOST_URL || `localhost:${port}`
 //#endregion
 
 //#region MongoDB
@@ -29,9 +30,24 @@ database.once('connected', () => {
 const app = express();
 app.use(morgan('dev'));
 app.use(helmet());
+
 app.use(cors());
+// whitelist cors
+const whitelist = ['http://localhost:3000', 'http://localhost:5000', hostUrl]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(bodyParser.json())
 app.use(
   '/docs', swaggerUi.serve,
   swaggerUi.setup(
