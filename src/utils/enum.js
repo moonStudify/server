@@ -1,6 +1,7 @@
 module.exports.COLLECTION = {
   USER: 'user',
   CLASS: 'class',
+  CLASS_STUDENT: 'class_student',
   NEW_FEED: 'new_feed',
   COMMENT: 'comment',
   TEST: 'test',

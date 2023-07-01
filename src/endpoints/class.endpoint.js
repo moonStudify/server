@@ -1,4 +1,4 @@
-const classEndpoint = require('./endpoints/class.endpoint');
+const classController = require('../controllers/class.controller');
 
 // GET ALL CLASSES
 export const GetAllClasses = (req, res) => {
@@ -6,7 +6,7 @@ export const GetAllClasses = (req, res) => {
         #swagger.description = 'Endpoint to get all classes.' 
     */
     res.setHeader('Content-Type', 'application/json')
-    const data = classEndpoint.GetAllClasses(req, res);
+    const data = classController.GetAllClasses(req, res);
 
     return res.status(200).send(data);
 }
@@ -17,7 +17,19 @@ export const GetClassById = (req, res) => {
         #swagger.description = 'Endpoint to get the specific class.' 
     */
     res.setHeader('Content-Type', 'application/json')
-    const data = classEndpoint.GetClassById(req, res);
+    const data = classController.GetClassById(req, res);
+
+    return res.status(200).send(data);
+}
+
+// GET CLASS BY TEACHER ID
+export const GetClassByTeacherId = (req, res) => {
+    /*  #swagger.tags = ['Class']
+    #swagger.description = 'Endpoint to get classes by teacher ID.' 
+    */
+
+    res.setHeader('Content-Type', 'application/json')
+    const data = classEndpoint.GetClassByTeacherId(req, res);
 
     return res.status(200).send(data);
 }

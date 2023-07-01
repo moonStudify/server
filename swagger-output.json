@@ -5,7 +5,7 @@
     "title": "Moonstudify",
     "description": "API Documentation for Moonstudify"
   },
-  "host": "http://localhost:5000",
+  "host": "localhost:5000",
   "basePath": "/",
   "tags": [
     {
@@ -305,7 +305,7 @@
             "description": "Comment information.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AddUser"
+              "$ref": "#/definitions/AddComment"
             }
           }
         ],
@@ -652,6 +652,30 @@
         }
       }
     },
+    "/class/teacher/{id}": {
+      "get": {
+        "tags": [
+          "Class"
+        ],
+        "description": "Endpoint to get classes by teacher ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/class/add": {
       "post": {
         "tags": [
@@ -669,6 +693,87 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/AddClass"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/classStudent/{id}": {
+      "get": {
+        "tags": [
+          "Class Student"
+        ],
+        "description": "Endpoint to get all students in class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/classStudent/{id}/{status}": {
+      "get": {
+        "tags": [
+          "Class Student"
+        ],
+        "description": "Endpoint to filter students in class by status.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/classStudent/join": {
+      "post": {
+        "tags": [
+          "Class Student"
+        ],
+        "description": "Endpoint to join class.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "input",
+            "in": "body",
+            "description": "Class Student information.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/JoinClass"
             }
           }
         ],
@@ -1023,15 +1128,15 @@
         },
         "dob": {
           "type": "string",
-          "example": "string"
+          "example": "2023-07-01T15:51:40.289Z"
         },
         "createDate": {
           "type": "string",
-          "example": "string"
+          "example": "2023-07-01T15:51:40.289Z"
         },
         "updateDate": {
           "type": "string",
-          "example": "string"
+          "example": "2023-07-01T15:51:40.289Z"
         }
       }
     },
@@ -1061,7 +1166,7 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "string"
+          "example": "2023-07-01T15:51:40.289Z"
         },
         "newFeedUrl": {
           "type": "string",
@@ -1103,8 +1208,29 @@
           "example": "string"
         },
         "maxPoint": {
+          "type": "number",
+          "example": 0
+        }
+      }
+    },
+    "AddComment": {
+      "type": "object",
+      "properties": {
+        "commentId": {
           "type": "string",
           "example": "string"
+        },
+        "newFeedId": {
+          "type": "string",
+          "example": "string"
+        },
+        "content": {
+          "type": "string",
+          "example": "string"
+        },
+        "dateCreate": {
+          "type": "string",
+          "example": "2023-07-01T15:51:40.289Z"
         }
       }
     },
@@ -1115,26 +1241,44 @@
           "type": "string",
           "example": "string"
         },
-        "className": {
+        "classCode": {
           "type": "string",
           "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "newfeeds": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "users": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "tests": {
+          "type": "array",
+          "example": [],
+          "items": {}
         },
         "teacherId": {
           "type": "string",
           "example": "string"
         },
-        "students": {
-          "type": "array",
-          "example": [],
-          "items": {}
-        },
         "dateCreate": {
           "type": "string",
-          "example": "string"
+          "example": "2023-07-01T15:51:40.289Z"
         },
         "dateUpdate": {
           "type": "string",
-          "example": "string"
+          "example": "2023-07-01T15:51:40.289Z"
         },
         "bannerUrl": {
           "type": "string",
@@ -1153,20 +1297,7 @@
           "type": "string",
           "example": "string"
         },
-        "questions": {
-          "type": "array",
-          "example": [],
-          "items": {}
-        },
-        "dateCreate": {
-          "type": "string",
-          "example": "string"
-        },
-        "dateUpdate": {
-          "type": "string",
-          "example": "string"
-        },
-        "name": {
+        "classCode": {
           "type": "string",
           "example": "string"
         },
@@ -1174,15 +1305,33 @@
           "type": "string",
           "example": "string"
         },
-        "duration": {
+        "startTime": {
+          "type": "string",
+          "example": "2023-07-01T15:51:40.289Z"
+        },
+        "endTime": {
+          "type": "string",
+          "example": "2023-07-01T15:51:40.289Z"
+        },
+        "url": {
           "type": "string",
           "example": "string"
+        },
+        "questions": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "questionOrders": {
+          "type": "array",
+          "example": [],
+          "items": {}
         },
         "maxPoint": {
-          "type": "string",
-          "example": "string"
+          "type": "number",
+          "example": 0
         },
-        "teacherId": {
+        "bannerUrl": {
           "type": "string",
           "example": "string"
         }
@@ -1205,11 +1354,11 @@
         },
         "submitTime": {
           "type": "string",
-          "example": "string"
+          "example": "2023-07-01T15:51:40.289Z"
         },
         "point": {
-          "type": "string",
-          "example": "string"
+          "type": "number",
+          "example": 0
         },
         "questions": {
           "type": "array",
@@ -1223,7 +1372,7 @@
         },
         "dateSubmit": {
           "type": "string",
-          "example": "string"
+          "example": "2023-07-01T15:51:40.289Z"
         }
       }
     },
@@ -1235,6 +1384,23 @@
           "example": "string"
         },
         "password": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "JoinClass": {
+      "type": "object",
+      "properties": {
+        "classId": {
+          "type": "string",
+          "example": "string"
+        },
+        "userId": {
+          "type": "string",
+          "example": "string"
+        },
+        "status": {
           "type": "string",
           "example": "string"
         }

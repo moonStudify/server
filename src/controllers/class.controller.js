@@ -14,6 +14,13 @@ const GetClassById = async (req, res) => {
         .catch((err) => res.status(400).json('Error: ' + err));
 }
 
+// GET CLASS BY TEACHER ID
+const GetClassByTeacherId = async (req, res) => {
+    Class.find({ teacherId: req.params.id })
+        .then((cls) => res.json(cls))
+        .catch((err) => res.status(400).json('Error: ' + err));
+}
+
 // ADD CLASS
 const AddClass = async (req, res) => {
     const newClass = new Class({
@@ -53,6 +60,7 @@ const DeleteClassById = async (req, res) => {
 module.exports = {
     GetAllClasses,
     GetClassById,
+    GetClassByTeacherId,
     AddClass,
     UpdateClassById,
     DeleteClassById,

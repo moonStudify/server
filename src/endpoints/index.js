@@ -4,6 +4,7 @@ const commentEndpoints = require('./comment.endpoint')
 const newFeedEndpoints = require('./newFeed.endpoint')
 const questionEndpoints = require('./question.endpoint')
 const classEndpoints = require('./class.endpoint')
+const classStudentEndpoints = require('./classStudent.endpoint')
 const testEndpoints = require('./test.endpoint')
 const takeTestEndpoints = require('./takeTest.endpoint')
 
@@ -44,9 +45,15 @@ module.exports = function (app) {
     // Class endpoints
     app.get('/class/', classEndpoints.GetAllClasses)
     app.get('/class/:id', classEndpoints.GetClassById)
+    app.get('/class/teacher/:id', classEndpoints.GetClassByTeacherId)
     app.post('/class/add', classEndpoints.AddClass)
     app.put('/class/:id', classEndpoints.UpdateClassById)
     app.delete('/class/:id', classEndpoints.DeleteClassById)
+
+    // ClassStudent endpoints
+    app.get('/classStudent/:id', classStudentEndpoints.GetAllStudentsInClass)
+    app.get('/classStudent/:id/:status', classStudentEndpoints.FilterStudentsInClassByStatus)
+    app.post('/classStudent/join', classStudentEndpoints.JoinClass)
 
     // Test endpoints
     app.get('/test/', testEndpoints.GetAllTests)

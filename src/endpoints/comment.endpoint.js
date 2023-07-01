@@ -30,7 +30,7 @@ export const AddComment = async (req, res) => {
             in: 'body',
             description: 'Comment information.',
             required: true,
-            schema: { $ref: "#/definitions/AddUser" }
+            schema: { $ref: "#/definitions/AddComment" }
         }
     */
     res.setHeader('Content-Type', 'application/json')
