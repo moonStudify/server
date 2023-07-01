@@ -4,14 +4,20 @@ const Question = require('../models/question');
 const GetAllQuestions = async (req, res) => {
     Question.find()
         .then((questions) => res.json(questions))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // GET QUESTION BY ID
 const GetQuestionById = async (req, res) => {
     Question.findById(req.params.id)
         .then((question) => res.json(question))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // ADD QUESTION
@@ -28,22 +34,31 @@ const AddQuestion = async (req, res) => {
 
     newQuestion
         .save()
-        .then(() => res.json('Question Added...'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .then((questions) => res.json(questions))
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // UPDATE QUESTION BY ID
 const UpdateQuestionById = async (req, res) => {
     Question.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((question) => res.json(question))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // DELETE QUESTION BY ID
 const DeleteQuestionById = async (req, res) => {
     Question.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Question deleted.'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+    .then((questions) => res.json(questions))
+    .catch((err) => res.status(500).json({
+        success: false,
+        message: err,
+    }));
 }
 
 module.exports = {

@@ -16,6 +16,6 @@ router.post('/join', checkJwt, classStudentController.JoinClass);
 router.put('/updateStatus', checkJwt, classStudentController.UpdateStudentStatusInClass);
 
 // GET ALL CLASSES OF STUDENT
-router.get('/student/:id', checkJwt, classStudentController.GetAllClassesByUserId);
+router.get('/student/:id', checkJwt, classStudentController.GetAllClassesByStudentId);
 
 module.exports = router;

@@ -4,21 +4,30 @@ const Class = require('../models/class');
 const GetAllClasses = async (req, res) => {
     Class.find()
         .then((classes) => res.json(classes))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // GET CLASS BY ID
 const GetClassById = async (req, res) => {
     Class.findById(req.params.id)
         .then((cls) => res.json(cls))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // GET CLASS BY TEACHER ID
 const GetClassByTeacherId = async (req, res) => {
     Class.find({ teacherId: req.params.id })
         .then((cls) => res.json(cls))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // ADD CLASS
@@ -39,22 +48,31 @@ const AddClass = async (req, res) => {
 
     newClass
         .save()
-        .then(() => res.json('Class Added...'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .then((classes) => res.json(classes))
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // UPDATE CLASS BY ID
 const UpdateClassById = async (req, res) => {
     Class.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((cls) => res.json(cls))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 // DELETE CLASS BY ID
 const DeleteClassById = async (req, res) => {
     Class.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Class deleted.'))
-        .catch((err) => res.status(400).json('Error: ' + err));
+        .then((classes) => res.json(classes))
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 module.exports = {

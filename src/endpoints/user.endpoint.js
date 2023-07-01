@@ -52,7 +52,7 @@ export const UpdateUserById = async (req, res) => {
             in: 'body',
             description: 'User information.',
             required: true,
-            schema: { $ref: "#/definitions/AddUser" }
+            schema: { $ref: "#/definitions/UpdateUser" }
         }
     */
     res.setHeader('Content-Type', 'application/json')
