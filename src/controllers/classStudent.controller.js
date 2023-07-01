@@ -4,7 +4,10 @@ const { CLASS_STUDENT_STATUS } = require('../shared/constants');
 // GET ALL STUDENTS IN CLASS
 const GetAllStudentsInClass = async (req, res) => {
     ClassStudent.find({ classId: req.params.id })
-        .then((classStudents) => res.json(classStudents))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -15,7 +18,10 @@ const GetAllStudentsInClass = async (req, res) => {
 const FilterStudentsInClassByStatus = async (req, res) => {
     console.log(req.params.id);
     ClassStudent.find({ classId: req.params.id, status: req.params.status })
-        .then((classStudents) => res.json(classStudents))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -29,7 +35,7 @@ const JoinClass = async (req, res) => {
         .then(classStudent => {
             if (classStudent) {
                 return res.status(400).json({
-                    errorMessage: 'Student already joined class',
+                    errorMessage: 'Already joined class',
                     data: classStudent._doc,
                 });
             }
@@ -38,12 +44,15 @@ const JoinClass = async (req, res) => {
                 const newClassStudent = new ClassStudent({
                     classId: req.body.classId,
                     studentId: req.body.studentId,
-                    status: CLASS_STUDENT_STATUS.JOINED,
+                    status: CLASS_STUDENT_STATUS.ACTIVE,
                 });
 
                 newClassStudent
                     .save()
-                    .then((classStudent) => res.json(classStudent))
+                    .then((data) => res.json({
+                        success: true,
+                        data: data,
+                    }))
                     .catch((err) => res.status(500).json({
                         success: false,
                         message: err,
@@ -62,7 +71,10 @@ const UpdateStudentStatusInClass = async (req, res) => {
         { classId: req.params.classId, studentId: req.params.studentId },
         { status: req.params.status },
         { new: true })
-        .then((classStudent) => res.json(classStudent))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -73,7 +85,10 @@ const UpdateStudentStatusInClass = async (req, res) => {
 const GetAllClassesByStudentId = async (req, res) => {
     // get all class student by user id and populate class
     ClassStudent.find({ studentId: req.params.id }).populate('classId')
-        .then((classStudents) => res.json(classStudents))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,

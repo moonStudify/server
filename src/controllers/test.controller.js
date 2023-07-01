@@ -3,7 +3,10 @@ const Test = require('../models/test');
 // GET ALL TESTS
 const GetAllTests = async (req, res) => {
     Test.find()
-        .then((tests) => res.json(tests))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -13,7 +16,10 @@ const GetAllTests = async (req, res) => {
 // GET TEST BY ID
 const GetTestById = async (req, res) => {
     Test.findById(req.params.id)
-        .then((test) => res.json(test))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -38,7 +44,10 @@ const AddTest = async (req, res) => {
 
     newTest
         .save()
-        .then((test) => res.json(test))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -48,7 +57,10 @@ const AddTest = async (req, res) => {
 // UPDATE TEST BY ID
 const UpdateTestById = async (req, res) => {
     Test.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then((test) => res.json(test))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -58,7 +70,10 @@ const UpdateTestById = async (req, res) => {
 // DELETE TEST BY ID
 const DeleteTestById = async (req, res) => {
     Test.findByIdAndDelete(req.params.id)
-        .then((test) => res.json(test))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,

@@ -3,7 +3,10 @@ const NewFeed = require('../models/newFeed');
 // GET ALL NEW FEEDS
 const GetAllNewFeeds = async (req, res) => {
     NewFeed.find()
-        .then((newFeeds) => res.json(newFeeds))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -13,7 +16,10 @@ const GetAllNewFeeds = async (req, res) => {
 // GET NEW FEED BY ID
 const GetNewFeedById = async (req, res) => {
     NewFeed.findById(req.params.id)
-        .then((newFeed) => res.json(newFeed))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -35,7 +41,10 @@ const AddNewFeed = async (req, res) => {
 
     newNewFeed
         .save()
-        .then((newFeeds) => res.json(newFeeds))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -45,7 +54,10 @@ const AddNewFeed = async (req, res) => {
 // UPDATE NEW FEED BY ID
 const UpdateNewFeedById = async (req, res) => {
     NewFeed.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then((newFeed) => res.json(newFeed))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -55,11 +67,14 @@ const UpdateNewFeedById = async (req, res) => {
 // DELETE NEW FEED BY ID
 const DeleteNewFeedById = async (req, res) => {
     NewFeed.findByIdAndDelete(req.params.id)
-    .then((newFeeds) => res.json(newFeeds))
-    .catch((err) => res.status(500).json({
-        success: false,
-        message: err,
-    }));
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 module.exports = {
