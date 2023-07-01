@@ -47,7 +47,7 @@ export const UpdateQuestionById = async (req, res) => {
             in: 'body',
             description: 'Question information.',
             required: true,
-            schema: { $ref: "#/definitions/AddQuestion" }
+            schema: { $ref: "#/definitions/UpdateQuestion" }
         }
     */
     res.setHeader('Content-Type', 'application/json')

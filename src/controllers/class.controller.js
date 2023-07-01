@@ -3,7 +3,10 @@ const Class = require('../models/class');
 // GET ALL CLASSES
 const GetAllClasses = async (req, res) => {
     Class.find()
-        .then((classes) => res.json(classes))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -13,7 +16,10 @@ const GetAllClasses = async (req, res) => {
 // GET CLASS BY ID
 const GetClassById = async (req, res) => {
     Class.findById(req.params.id)
-        .then((cls) => res.json(cls))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -23,7 +29,10 @@ const GetClassById = async (req, res) => {
 // GET CLASS BY TEACHER ID
 const GetClassByTeacherId = async (req, res) => {
     Class.find({ teacherId: req.params.id })
-        .then((cls) => res.json(cls))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -48,7 +57,10 @@ const AddClass = async (req, res) => {
 
     newClass
         .save()
-        .then((classes) => res.json(classes))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -58,7 +70,10 @@ const AddClass = async (req, res) => {
 // UPDATE CLASS BY ID
 const UpdateClassById = async (req, res) => {
     Class.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then((cls) => res.json(cls))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -68,7 +83,10 @@ const UpdateClassById = async (req, res) => {
 // DELETE CLASS BY ID
 const DeleteClassById = async (req, res) => {
     Class.findByIdAndDelete(req.params.id)
-        .then((classes) => res.json(classes))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,

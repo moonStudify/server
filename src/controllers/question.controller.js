@@ -3,7 +3,10 @@ const Question = require('../models/question');
 // GET ALL QUESTIONS
 const GetAllQuestions = async (req, res) => {
     Question.find()
-        .then((questions) => res.json(questions))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -13,7 +16,10 @@ const GetAllQuestions = async (req, res) => {
 // GET QUESTION BY ID
 const GetQuestionById = async (req, res) => {
     Question.findById(req.params.id)
-        .then((question) => res.json(question))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -23,7 +29,6 @@ const GetQuestionById = async (req, res) => {
 // ADD QUESTION
 const AddQuestion = async (req, res) => {
     const newQuestion = new Question({
-        questionId: req.body.questionId,
         type: req.body.type,
         content: req.body.content,
         answers: req.body.answers,
@@ -34,7 +39,10 @@ const AddQuestion = async (req, res) => {
 
     newQuestion
         .save()
-        .then((questions) => res.json(questions))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -44,7 +52,10 @@ const AddQuestion = async (req, res) => {
 // UPDATE QUESTION BY ID
 const UpdateQuestionById = async (req, res) => {
     Question.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then((question) => res.json(question))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -54,11 +65,14 @@ const UpdateQuestionById = async (req, res) => {
 // DELETE QUESTION BY ID
 const DeleteQuestionById = async (req, res) => {
     Question.findByIdAndDelete(req.params.id)
-    .then((questions) => res.json(questions))
-    .catch((err) => res.status(500).json({
-        success: false,
-        message: err,
-    }));
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
+        .catch((err) => res.status(500).json({
+            success: false,
+            message: err,
+        }));
 }
 
 module.exports = {

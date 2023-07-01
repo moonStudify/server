@@ -78,7 +78,14 @@ const doc = {
             teacherId: "string",
         },
         AddQuestion: {
-            questionId: "string",
+            type: "string",
+            content: "string",
+            answers: [],
+            correctAnswers: [],
+            thumbnailUrl: "string",
+            maxPoint: 0,
+        },
+        UpdateQuestion: {
             type: "string",
             content: "string",
             answers: [],

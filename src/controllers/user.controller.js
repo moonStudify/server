@@ -7,7 +7,10 @@ const User = require('../models/user');
  */
 const GetAllUsers = async (req, res) => {
     User.find()
-        .then((users) => res.json(users))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -17,7 +20,10 @@ const GetAllUsers = async (req, res) => {
 // Get user by id
 const GetUserById = async (req, res) => {
     User.findById(req.params.id)
-        .then((user) => res.json(user))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -42,7 +48,10 @@ const AddUser = async (req, res) => {
 
     newUser
         .save()
-        .then((user) => res.json(user))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -52,7 +61,10 @@ const AddUser = async (req, res) => {
 // Update user by id
 const UpdateUserById = async (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then((user) => res.json(user))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -62,7 +74,10 @@ const UpdateUserById = async (req, res) => {
 // Delete user by id
 const DeleteUserById = async (req, res) => {
     User.findByIdAndDelete(req.params.id)
-        .then((user) => res.json(user))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,

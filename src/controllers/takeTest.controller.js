@@ -3,7 +3,10 @@ const TakeTest = require('../models/takeTest');
 // GET ALL TAKE TESTS
 const GetAllTakeTests = async (req, res) => {
     TakeTest.find()
-        .then((takeTests) => res.json(takeTests))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -13,7 +16,10 @@ const GetAllTakeTests = async (req, res) => {
 // GET TAKE TEST BY ID
 const GetTakeTestById = async (req, res) => {
     TakeTest.findById(req.params.id)
-        .then((takeTest) => res.json(takeTest))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -35,7 +41,10 @@ const AddTakeTest = async (req, res) => {
 
     newTakeTest
         .save()
-        .then((takeTests) => res.json(takeTests))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -45,7 +54,10 @@ const AddTakeTest = async (req, res) => {
 // UPDATE TAKE TEST BY ID
 const UpdateTakeTestById = async (req, res) => {
     TakeTest.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then((takeTest) => res.json(takeTest))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -55,7 +67,10 @@ const UpdateTakeTestById = async (req, res) => {
 // DELETE TAKE TEST BY ID
 const DeleteTakeTestById = async (req, res) => {
     TakeTest.findByIdAndDelete(req.params.id)
-        .then((takeTests) => res.json(takeTests))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,

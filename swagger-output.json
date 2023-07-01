@@ -498,7 +498,7 @@
             "description": "Question information.",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AddQuestion"
+              "$ref": "#/definitions/UpdateQuestion"
             }
           }
         ],
@@ -1165,7 +1165,7 @@
         },
         "dob": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         }
       }
     },
@@ -1186,7 +1186,7 @@
         },
         "dob": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         }
       }
     },
@@ -1216,7 +1216,7 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         },
         "newFeedUrl": {
           "type": "string",
@@ -1231,10 +1231,37 @@
     "AddQuestion": {
       "type": "object",
       "properties": {
-        "questionId": {
+        "type": {
           "type": "string",
           "example": "string"
         },
+        "content": {
+          "type": "string",
+          "example": "string"
+        },
+        "answers": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "correctAnswers": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "thumbnailUrl": {
+          "type": "string",
+          "example": "string"
+        },
+        "maxPoint": {
+          "type": "number",
+          "example": 0
+        }
+      }
+    },
+    "UpdateQuestion": {
+      "type": "object",
+      "properties": {
         "type": {
           "type": "string",
           "example": "string"
@@ -1280,7 +1307,7 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         }
       }
     },
@@ -1324,11 +1351,11 @@
         },
         "dateCreate": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         },
         "dateUpdate": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         },
         "bannerUrl": {
           "type": "string",
@@ -1357,11 +1384,11 @@
         },
         "startTime": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         },
         "endTime": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         },
         "url": {
           "type": "string",
@@ -1404,7 +1431,7 @@
         },
         "submitTime": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         },
         "point": {
           "type": "number",
@@ -1422,7 +1449,7 @@
         },
         "dateSubmit": {
           "type": "string",
-          "example": "2023-07-01T16:56:41.923Z"
+          "example": "2023-07-01T17:16:41.939Z"
         }
       }
     },

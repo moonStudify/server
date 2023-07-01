@@ -3,7 +3,10 @@ const Comment = require('../models/comment');
 // GET ALL COMMENTS
 const GetAllComments = async (req, res) => {
     Comment.find()
-        .then((comments) => res.json(comments))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -13,7 +16,10 @@ const GetAllComments = async (req, res) => {
 // GET COMMENT BY ID
 const GetCommentById = async (req, res) => {
     Comment.findById(req.params.id)
-        .then((comment) => res.json(comment))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -31,7 +37,10 @@ const AddComment = async (req, res) => {
 
     newComment
         .save()
-        .then((comments) => res.json(comments))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -41,7 +50,10 @@ const AddComment = async (req, res) => {
 // UPDATE COMMENT BY ID
 const UpdateCommentById = async (req, res) => {
     Comment.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        .then((comment) => res.json(comment))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
@@ -51,7 +63,10 @@ const UpdateCommentById = async (req, res) => {
 // DELETE COMMENT BY ID
 const DeleteCommentById = async (req, res) => {
     Comment.findByIdAndDelete(req.params.id)
-        .then((comments) => res.json(comments))
+        .then((data) => res.json({
+            success: true,
+            data: data,
+        }))
         .catch((err) => res.status(500).json({
             success: false,
             message: err,
